@@ -3,6 +3,7 @@
 SchoolProject Using Asp.net Core Web Api Using Clean Architecture Based On Code First
 
 Components
+
 1.CQRS Design Pattern
 
 2.Generic(Repository) Design Pattern
