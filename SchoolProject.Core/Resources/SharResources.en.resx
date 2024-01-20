@@ -129,8 +129,14 @@
   <data name="Deleted" xml:space="preserve">
     <value>Deleted Successfully</value>
   </data>
+  <data name="DepartmementId" xml:space="preserve">
+    <value>departmement Id</value>
+  </data>
   <data name="IsExist" xml:space="preserve">
     <value>already Exist</value>
+  </data>
+  <data name="IsNotExist" xml:space="preserve">
+    <value>is not exist</value>
   </data>
   <data name="MaxLengthis100" xml:space="preserve">
     <value>Length is 100 or less</value>
