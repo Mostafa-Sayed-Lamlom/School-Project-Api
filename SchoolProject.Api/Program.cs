@@ -18,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+
 #region Connection SQL
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
@@ -28,7 +29,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 #region Dependency Injections
 builder.Services.AddInfrastructureDpendencies()
 				.AddServiceDpendencies()
-				.AddCoreDependencies();
+				.AddCoreDependencies()
+				.AddServiceRegisteration();
 #endregion
 
 #region Localization
