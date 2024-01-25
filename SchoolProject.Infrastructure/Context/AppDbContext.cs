@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
-using SchoolProject.Infrastructure.Identity;
+using SchoolProject.Data.Identity;
 using System.Reflection;
 
 namespace SchoolProject.Infrastructure.Context

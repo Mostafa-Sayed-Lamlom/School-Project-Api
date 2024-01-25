@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolProject.Data.Identity;
 using SchoolProject.Infrastructure.Context;
-using SchoolProject.Infrastructure.Identity;
 
 namespace SchoolProject.Infrastructure
 {
@@ -28,7 +28,7 @@ namespace SchoolProject.Infrastructure
 				option.User.AllowedUserNameCharacters =
 				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
 				option.User.RequireUniqueEmail = true;
-				option.SignIn.RequireConfirmedEmail = true;
+				option.SignIn.RequireConfirmedEmail = false;
 
 			}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 			return services;

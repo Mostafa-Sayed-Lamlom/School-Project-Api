@@ -21,5 +21,10 @@
 			public const string Prefix = Rule + "Department/";
 			public const string GetById = Prefix + "Id";
 		}
+		public static class UserRouting
+		{
+			public const string Prefix = Rule + "User/";
+			public const string Create = Prefix + "Create";
+		}
 	}
 }
