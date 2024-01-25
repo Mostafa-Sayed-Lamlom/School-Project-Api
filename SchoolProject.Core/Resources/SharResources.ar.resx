@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>تم الإضافة بنجاح</value>
   </data>
+  <data name="AddUserFaild" xml:space="preserve">
+    <value>فشل اضافة المستخدم</value>
+  </data>
   <data name="BadRequest" xml:space="preserve">
     <value>هذا الطلب لا يمكن فهمه</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="DepartmementId" xml:space="preserve">
     <value>رقم القسم</value>
+  </data>
+  <data name="EmailIsExist" xml:space="preserve">
+    <value>هذا الاميل موجود بالفعل</value>
   </data>
   <data name="IsExist" xml:space="preserve">
     <value>موجود بالفعل</value>
@@ -150,6 +156,9 @@
   <data name="NotFound" xml:space="preserve">
     <value>غير متوفر</value>
   </data>
+  <data name="passNotEqualConfPass" xml:space="preserve">
+    <value>كلمة السر وتاكيد كلمة السر غير متطابقين</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
   </data>
@@ -164,5 +173,8 @@
   </data>
   <data name="Updated" xml:space="preserve">
     <value>تم التحديت بنجاح</value>
+  </data>
+  <data name="UserNameIsExist" xml:space="preserve">
+    <value>اسم المستخدم موجود بالفعل</value>
   </data>
 </root>

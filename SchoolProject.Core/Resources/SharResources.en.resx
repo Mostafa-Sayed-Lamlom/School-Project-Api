@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>Added Succesfully</value>
   </data>
+  <data name="AddUserFaild" xml:space="preserve">
+    <value>Add User Faild</value>
+  </data>
   <data name="BadRequest" xml:space="preserve">
     <value>Bad Request</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="DepartmementId" xml:space="preserve">
     <value>departmement Id</value>
+  </data>
+  <data name="EmailIsExist" xml:space="preserve">
+    <value>Email Is Exist</value>
   </data>
   <data name="IsExist" xml:space="preserve">
     <value>already Exist</value>
@@ -150,6 +156,9 @@
   <data name="NotFound" xml:space="preserve">
     <value>object is not found</value>
   </data>
+  <data name="passNotEqualConfPass" xml:space="preserve">
+    <value>password and confirm password not Equal</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
   </data>
@@ -164,5 +173,8 @@
   </data>
   <data name="Updated" xml:space="preserve">
     <value>Updated Successfully</value>
+  </data>
+  <data name="UserNameIsExist" xml:space="preserve">
+    <value>User Name Is Exist</value>
   </data>
 </root>

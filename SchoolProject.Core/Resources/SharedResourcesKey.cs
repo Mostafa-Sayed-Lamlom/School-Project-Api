@@ -18,5 +18,9 @@
 		public const string UnprocessableEntity = "UnprocessableEntity";
 		public const string IsNotExist = "IsNotExist";
 		public const string DepartmementId = "DepartmementId";
+		public const string passNotEqualConfPass = "passNotEqualConfPass";
+		public const string EmailIsExist = "EmailIsExist";
+		public const string UserNameIsExist = "UserNameIsExist";
+		public const string AddUserFaild = "AddUserFaild";
 	}
 }
