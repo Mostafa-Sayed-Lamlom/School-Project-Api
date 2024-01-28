@@ -29,6 +29,7 @@
 			public const string GetById = Prefix + singleRoute;
 			public const string Edit = Prefix + "Edit";
 			public const string Delete = Prefix + singleRoute;
+			public const string ChangePassword = Prefix + "ChangePassword";
 		}
 	}
 }

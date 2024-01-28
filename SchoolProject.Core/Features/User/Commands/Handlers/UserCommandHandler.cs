@@ -11,7 +11,8 @@ namespace SchoolProject.Core.Features.User.Commands.Handlers
 	public class UserCommandHandler : ResponseHandler,
 									 IRequestHandler<AddUserCommand, Response<string>>,
 									 IRequestHandler<EditUserCommand, Response<string>>,
-									 IRequestHandler<DeleteUserCommand, Response<string>>
+									 IRequestHandler<DeleteUserCommand, Response<string>>,
+									 IRequestHandler<ChangeUserPasswordCommand, Response<string>>
 	{
 		#region Fileds
 		private readonly IMapper _mapper;
@@ -89,6 +90,19 @@ namespace SchoolProject.Core.Features.User.Commands.Handlers
 				return BadRequest<string>(deleteResult.Errors.FirstOrDefault().Description);
 
 			return Deleted<string>();
+		}
+
+		public async Task<Response<string>> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
+		{
+			var IsUserExist = await _userManager.FindByIdAsync(request.Id.ToString());
+			if (IsUserExist == null)
+				return NotFound<string>();
+
+			var ChangeResult = await _userManager.ChangePasswordAsync(IsUserExist, request.CurrentPassword, request.NewPassword);
+			if (!ChangeResult.Succeeded)
+				return BadRequest<string>(ChangeResult.Errors.FirstOrDefault().Description);
+
+			return Success<string>("");
 		}
 		#endregion
 	}
