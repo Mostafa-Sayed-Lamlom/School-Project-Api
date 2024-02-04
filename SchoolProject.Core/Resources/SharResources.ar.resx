@@ -138,6 +138,9 @@
   <data name="EmailIsExist" xml:space="preserve">
     <value>هذا الاميل موجود بالفعل</value>
   </data>
+  <data name="EmailOrPassWrong" xml:space="preserve">
+    <value> الأميل او كلمة السر خطأ</value>
+  </data>
   <data name="IsExist" xml:space="preserve">
     <value>موجود بالفعل</value>
   </data>
