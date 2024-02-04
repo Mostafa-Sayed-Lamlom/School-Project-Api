@@ -138,6 +138,9 @@
   <data name="EmailIsExist" xml:space="preserve">
     <value>Email Is Exist</value>
   </data>
+  <data name="EmailOrPassWrong" xml:space="preserve">
+    <value>Email or password is wrong</value>
+  </data>
   <data name="IsExist" xml:space="preserve">
     <value>already Exist</value>
   </data>
