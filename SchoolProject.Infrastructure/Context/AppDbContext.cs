@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Identity;
 using System.Reflection;
 
@@ -24,6 +25,8 @@ namespace SchoolProject.Infrastructure.Context
 		public DbSet<StudentSubject> studentSubjects { get; set; }
 		public DbSet<Instructor> instructors { get; set; }
 		public DbSet<Ins_Sub> instructorSubjects { get; set; }
+		public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
+
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
