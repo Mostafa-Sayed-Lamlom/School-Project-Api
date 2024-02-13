@@ -36,6 +36,8 @@
 		{
 			public const string Prefix = Rule + "Authentication/";
 			public const string SignIn = Prefix + "SignIn";
+			public const string IsValidToken = Prefix + "IsValidToken";
+			public const string RefreshToken = Prefix + "GenerateRefreshToken";
 		}
 	}
 }
