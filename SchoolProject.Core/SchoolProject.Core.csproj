@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Authentication\Queries\Results\" />
+    <Folder Include="Features\Authorization\Queries\" />
     <Folder Include="Features\Department\Commands\" />
     <Folder Include="Mapping\Departments\CommandMapping\" />
   </ItemGroup>

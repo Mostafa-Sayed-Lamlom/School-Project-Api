@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
@@ -16,22 +17,25 @@ namespace SchoolProject.Service.Implementations
 	{
 		#region Fields
 		private readonly jwtSettings _jwtSettings;
+		private readonly UserManager<User> _userManager;
 		private readonly IUserRefreshTokenRepository _userRefreshTokenRepository;
 		#endregion
 
 		#region Constructors
 		public AuthenticationService(jwtSettings jwtSettings,
+									 UserManager<User> userManager,
 									 IUserRefreshTokenRepository userRefreshTokenRepository)
 		{
 			_jwtSettings = jwtSettings;
 			_userRefreshTokenRepository = userRefreshTokenRepository;
+			_userManager = userManager;
 		}
 		#endregion
 
 		#region Handle Functions
 		public async Task<JwtAuthResult> GenerateJWTTokenAsync(User user)
 		{
-			var (jwtToken, accessToken) = GetJwtToken(user);
+			var (jwtToken, accessToken) = await GetJwtToken(user);
 
 			var refreshToken = new RefreshToken
 			{
@@ -63,7 +67,7 @@ namespace SchoolProject.Service.Implementations
 
 		public async Task<JwtAuthResult> GetRefreshToken(User user, JwtSecurityToken jwtToken, DateTime? expiryDate, string refreshToken)
 		{
-			var (jwtSecurityToken, newToken) = GetJwtToken(user);
+			var (jwtSecurityToken, newToken) = await GetJwtToken(user);
 			var response = new JwtAuthResult();
 			response.AccessToken = newToken;
 			var refreshTokenResult = new RefreshToken();
@@ -159,14 +163,21 @@ namespace SchoolProject.Service.Implementations
 			return Convert.ToBase64String(randomNumber);
 		}
 
-		private (JwtSecurityToken, string) GetJwtToken(User user)
+		private async Task<(JwtSecurityToken, string)> GetJwtToken(User user)
 		{
 			var claims = new List<Claim>()
 			{
 				new Claim("UserId", user.Id.ToString()),
 				new Claim("UserName", user.UserName),
-				new Claim("UserEmail", user.Email)
+				new Claim("UserEmail", user.Email),
+
 			};
+			var roles = await _userManager.GetRolesAsync(user);
+			foreach (var role in roles)
+			{
+				claims.Add(new Claim(ClaimTypes.Role, role));
+			}
+
 			var jwtToken = new JwtSecurityToken(
 				_jwtSettings.Issuer,
 				_jwtSettings.Audience,

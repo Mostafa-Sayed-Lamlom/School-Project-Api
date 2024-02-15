@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>Added Succesfully</value>
   </data>
+  <data name="AddFailed" xml:space="preserve">
+    <value>Add Failed</value>
+  </data>
   <data name="AddUserFaild" xml:space="preserve">
     <value>Add User Faild</value>
   </data>

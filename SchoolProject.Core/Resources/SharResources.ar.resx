@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>تم الإضافة بنجاح</value>
   </data>
+  <data name="AddFailed" xml:space="preserve">
+    <value>فشلت الاضافة</value>
+  </data>
   <data name="AddUserFaild" xml:space="preserve">
     <value>فشل اضافة المستخدم</value>
   </data>
