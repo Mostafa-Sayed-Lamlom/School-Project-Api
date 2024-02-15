@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SchoolProject.Core;
 using SchoolProject.Core.Middlewares;
+using SchoolProject.Data.Identity;
 using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Context;
+using SchoolProject.Infrastructure.Seeder;
 using SchoolProject.Service;
 using System.Globalization;
 
@@ -72,6 +75,13 @@ builder.Services.AddCors(options =>
 #endregion
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+	var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+	var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
+	await RoleSeeder.SeedAsync(roleManager);
+	await UserSeeder.SeedAsync(userManager);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

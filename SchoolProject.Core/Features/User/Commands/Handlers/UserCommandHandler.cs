@@ -49,6 +49,8 @@ namespace SchoolProject.Core.Features.User.Commands.Handlers
 				//return BadRequest<string>(_stringLocalizer[SharedResourcesKey.AddUserFaild]);
 				return BadRequest<string>(CreateResult.Errors.FirstOrDefault().Description);
 
+			await _userManager.AddToRoleAsync(newUser, "User");
+
 			return Created("");
 		}
 

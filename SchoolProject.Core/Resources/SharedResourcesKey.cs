@@ -23,5 +23,6 @@
 		public const string UserNameIsExist = "UserNameIsExist";
 		public const string AddUserFaild = "AddUserFaild";
 		public const string EmailOrPassWrong = "EmailOrPassWrong";
+		public const string AddFailed = "AddFailed";
 	}
 }

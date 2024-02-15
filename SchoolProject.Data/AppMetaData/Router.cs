@@ -39,5 +39,11 @@
 			public const string IsValidToken = Prefix + "IsValidToken";
 			public const string RefreshToken = Prefix + "GenerateRefreshToken";
 		}
+
+		public static class AuthoriztionRouting
+		{
+			public const string Prefix = Rule + "Authorization/";
+			public const string AddRole = Prefix + "AddRole";
+		}
 	}
 }
