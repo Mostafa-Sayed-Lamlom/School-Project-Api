@@ -44,6 +44,7 @@
 		{
 			public const string Prefix = Rule + "Authorization/";
 			public const string AddRole = Prefix + "AddRole";
+			public const string EditRole = Prefix + "EditRole";
 		}
 	}
 }
