@@ -33,6 +33,23 @@ namespace SchoolProject.Service.Implementations
 		{
 			return await _roleManager.RoleExistsAsync(roleName);
 		}
+
+		public async Task<string> EditRoleAsync(string roleName, int id)
+		{
+			//check role is exist or not
+			var role = await _roleManager.FindByIdAsync(id.ToString());
+			if (role == null)
+				return "notFound";
+			//check role name is already Exist or not
+			var IsNameExist = await IsRoleExistByName(roleName);
+			if (IsNameExist) return "isExist";
+
+			role.Name = roleName;
+			var result = await _roleManager.UpdateAsync(role);
+			if (result.Succeeded) return "Success";
+			var errors = string.Join("-", result.Errors);
+			return errors;
+		}
 		#endregion
 	}
 }

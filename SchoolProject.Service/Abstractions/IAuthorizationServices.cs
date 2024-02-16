@@ -4,5 +4,6 @@
 	{
 		public Task<string> AddRoleAsync(string roleName);
 		public Task<bool> IsRoleExistByName(string roleName);
+		public Task<string> EditRoleAsync(string roleName, int id);
 	}
 }

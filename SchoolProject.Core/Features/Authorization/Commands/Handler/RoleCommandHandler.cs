@@ -9,7 +9,8 @@ using SchoolProject.Service.Abstractions;
 namespace SchoolProject.Core.Features.Authorization.Commands.Handler
 {
 	public class RoleCommandHandler : ResponseHandler,
-									  IRequestHandler<AddRoleCommand, Response<string>>
+									  IRequestHandler<AddRoleCommand, Response<string>>,
+									  IRequestHandler<EditRoleCommand, Response<string>>
 	{
 		#region Fields
 		private readonly IStringLocalizer<SharResources> _stringLocalizer;
@@ -34,6 +35,16 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Handler
 			var result = await _authorizationService.AddRoleAsync(request.RoleName);
 			if (result == "Success") return Success("");
 			return BadRequest<string>(_stringLocalizer[SharedResourcesKey.AddFailed]);
+		}
+
+		public async Task<Response<string>> Handle(EditRoleCommand request, CancellationToken cancellationToken)
+		{
+			var result = await _authorizationService.EditRoleAsync(request.roleName, request.id);
+			if (result == "notFound") return NotFound<string>();
+			else if (result == "Success") return Success("");
+			else if (result == "isExist") return BadRequest<string>("Name is already Exist");
+			else
+				return BadRequest<string>(result);
 		}
 		#endregion
 	}
