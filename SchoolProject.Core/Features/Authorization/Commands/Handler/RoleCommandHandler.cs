@@ -10,7 +10,8 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Handler
 {
 	public class RoleCommandHandler : ResponseHandler,
 									  IRequestHandler<AddRoleCommand, Response<string>>,
-									  IRequestHandler<EditRoleCommand, Response<string>>
+									  IRequestHandler<EditRoleCommand, Response<string>>,
+									  IRequestHandler<DeleteRoleCommand, Response<string>>
 	{
 		#region Fields
 		private readonly IStringLocalizer<SharResources> _stringLocalizer;
@@ -45,6 +46,16 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Handler
 			else if (result == "isExist") return BadRequest<string>("Name is already Exist");
 			else
 				return BadRequest<string>(result);
+		}
+
+		public async Task<Response<string>> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+		{
+			var resultofDeletedRole = await _authorizationService.DeleteRoleAsync(request.id);
+			if (resultofDeletedRole == "NotFound") return NotFound<string>();
+			else if (resultofDeletedRole == "Success") return Success("");
+			else if (resultofDeletedRole == "Used") return BadRequest<string>("This role is used with users");
+			else
+				return BadRequest<string>(resultofDeletedRole);
 		}
 		#endregion
 	}
