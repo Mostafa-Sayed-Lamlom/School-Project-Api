@@ -15,7 +15,7 @@ namespace SchoolProject.Api.Controllers
 			return NewResult(response);
 		}
 
-		[HttpPost(Router.AuthenticationRouting.IsValidToken)]
+		[HttpGet(Router.AuthenticationRouting.IsValidToken)]
 		public async Task<IActionResult> IsValidToken([FromQuery] ValidTokenQuery command)
 		{
 			var response = await _mediator.Send(command);
