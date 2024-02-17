@@ -50,6 +50,22 @@ namespace SchoolProject.Service.Implementations
 			var errors = string.Join("-", result.Errors);
 			return errors;
 		}
+
+		public async Task<string> DeleteRoleAsync(int id)
+		{
+			//check if id is exist or not
+			var role = await _roleManager.FindByIdAsync(id.ToString());
+			if (role == null) return "NotFound";
+			//check if role is used or not
+			var listOfUsersHasRole = await _userManager.GetUsersInRoleAsync(role.Name);
+			if (listOfUsersHasRole != null && listOfUsersHasRole.Count() > 0) return "Used";
+			//delete role 
+			var resultOfDeletedRole = await _roleManager.DeleteAsync(role);
+			if (resultOfDeletedRole.Succeeded) return "Success";
+			//if deleted faild
+			var errors = string.Join("-", resultOfDeletedRole.Errors);
+			return errors;
+		}
 		#endregion
 	}
 }
