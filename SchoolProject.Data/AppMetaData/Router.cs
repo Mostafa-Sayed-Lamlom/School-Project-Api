@@ -29,26 +29,27 @@
 			public const string GetById = Prefix + singleRoute;
 			public const string Edit = Prefix + "Edit";
 			public const string Delete = Prefix + singleRoute;
-			public const string ChangePassword = Prefix + "ChangePassword";
+			public const string ChangePassword = Prefix + "Change-Password";
 		}
 
 		public static class AuthenticationRouting
 		{
 			public const string Prefix = Rule + "Authentication/";
-			public const string SignIn = Prefix + "SignIn";
-			public const string IsValidToken = Prefix + "IsValidToken";
-			public const string RefreshToken = Prefix + "GenerateRefreshToken";
+			public const string SignIn = Prefix + "Sign-In";
+			public const string IsValidToken = Prefix + "Is-Valid-Token";
+			public const string RefreshToken = Prefix + "Generate-Refresh-Token";
 		}
 
 		public static class AuthoriztionRouting
 		{
 			public const string Prefix = Rule + "Authorization/";
-			public const string AddRole = Prefix + "AddRole";
-			public const string EditRole = Prefix + "EditRole";
-			public const string DeleteRole = Prefix + "DeleteRole/" + singleRoute;
-			public const string GetRolesList = Prefix + "GetRolesList";
-			public const string GetRoleById = Prefix + "GetRoleById/" + singleRoute;
-			public const string ManageUserRoles = Prefix + "ManageUserRoles/" + singleRoute;
+			public const string AddRole = Prefix + "Add-Role";
+			public const string EditRole = Prefix + "Edit-Role";
+			public const string DeleteRole = Prefix + "Delete-Role/" + singleRoute;
+			public const string GetRolesList = Prefix + "Get-Roles-List";
+			public const string GetRoleById = Prefix + "Get-Role-By-Id/" + singleRoute;
+			public const string ManageUserRoles = Prefix + "Manage-User-Roles/" + singleRoute;
+			public const string UpdateUserRoles = Prefix + "Update-User-Roles";
 		}
 	}
 }
