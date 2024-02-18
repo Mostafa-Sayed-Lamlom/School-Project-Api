@@ -48,6 +48,7 @@
 			public const string DeleteRole = Prefix + "DeleteRole/" + singleRoute;
 			public const string GetRolesList = Prefix + "GetRolesList";
 			public const string GetRoleById = Prefix + "GetRoleById/" + singleRoute;
+			public const string ManageUserRoles = Prefix + "ManageUserRoles/" + singleRoute;
 		}
 	}
 }
