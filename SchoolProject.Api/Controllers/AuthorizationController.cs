@@ -58,5 +58,18 @@ namespace SchoolProject.Api.Controllers
 			var response = await _mediator.Send(command);
 			return NewResult(response);
 		}
+
+		[HttpGet(Router.AuthoriztionRouting.ManageUserClaims)]
+		public async Task<IActionResult> ManageUserClaims([FromRoute] int id)
+		{
+			var response = await _mediator.Send(new ManageUserClaimsQuery(id));
+			return NewResult(response);
+		}
+		[HttpPut(Router.AuthoriztionRouting.UpdateUserClaims)]
+		public async Task<IActionResult> UpdateUserClaims([FromBody] UpdateUserClaimsCommand command)
+		{
+			var response = await _mediator.Send(command);
+			return NewResult(response);
+		}
 	}
 }

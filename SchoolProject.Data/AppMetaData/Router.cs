@@ -50,6 +50,8 @@
 			public const string GetRoleById = Prefix + "Get-Role-By-Id/" + singleRoute;
 			public const string ManageUserRoles = Prefix + "Manage-User-Roles/" + singleRoute;
 			public const string UpdateUserRoles = Prefix + "Update-User-Roles";
+			public const string ManageUserClaims = Prefix + "Manage-User-Claims/" + singleRoute;
+			public const string UpdateUserClaims = Prefix + "Update-User-Claims";
 		}
 	}
 }
