@@ -34,6 +34,7 @@ namespace SchoolProject.Api.Controllers
 			return NewResult(response);
 		}
 
+		[Authorize(Policy = "CreateStudent")]
 		[HttpPost(Router.StudentRouting.Create)]
 		public async Task<IActionResult> AddStudent([FromBody] AddStudentCommand command)
 		{
@@ -41,6 +42,7 @@ namespace SchoolProject.Api.Controllers
 			return NewResult(response);
 		}
 
+		[Authorize(Policy = "EditStudent")]
 		[HttpPut(Router.StudentRouting.Edit)]
 		public async Task<IActionResult> EditStudent([FromBody] EditStudentCommand command)
 		{
@@ -48,6 +50,7 @@ namespace SchoolProject.Api.Controllers
 			return NewResult(response);
 		}
 
+		[Authorize(Policy = "DeleteStudent")]
 		[HttpDelete(Router.StudentRouting.Delete)]
 		public async Task<IActionResult> DeleteStudent([FromRoute] int id)
 		{
