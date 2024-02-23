@@ -177,6 +177,8 @@ namespace SchoolProject.Service.Implementations
 			{
 				claims.Add(new Claim(ClaimTypes.Role, role));
 			}
+			var userClaims = await _userManager.GetClaimsAsync(user);
+			claims.AddRange(userClaims);
 
 			var jwtToken = new JwtSecurityToken(
 				_jwtSettings.Issuer,
