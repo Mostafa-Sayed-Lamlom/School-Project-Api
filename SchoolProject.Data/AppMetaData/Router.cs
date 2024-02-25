@@ -53,5 +53,10 @@
 			public const string ManageUserClaims = Prefix + "Manage-User-Claims/" + singleRoute;
 			public const string UpdateUserClaims = Prefix + "Update-User-Claims";
 		}
+
+		public static class EmailRouting
+		{
+			public const string SendEmail = Rule + "SendEmail";
+		}
 	}
 }

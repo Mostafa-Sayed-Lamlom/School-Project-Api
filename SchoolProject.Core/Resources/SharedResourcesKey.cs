@@ -24,5 +24,6 @@
 		public const string AddUserFaild = "AddUserFaild";
 		public const string EmailOrPassWrong = "EmailOrPassWrong";
 		public const string AddFailed = "AddFailed";
+		public const string SendEmailFailed = "SendEmailFailed";
 	}
 }

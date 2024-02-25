@@ -168,6 +168,9 @@
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
   </data>
+  <data name="SendEmailFailed" xml:space="preserve">
+    <value>فشل ارسال الاميل</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>تم بنجاح</value>
   </data>

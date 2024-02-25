@@ -37,9 +37,12 @@ namespace SchoolProject.Infrastructure
 				option.SignIn.RequireConfirmedEmail = false;
 			}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-			// JWT Setting
+			// JWT and email Setting
 			var jwtSettings = new jwtSettings();
+			var emailSettings = new emailSettings();
+			configuration.GetSection(nameof(emailSettings)).Bind(emailSettings);
 			configuration.GetSection(nameof(jwtSettings)).Bind(jwtSettings);
+			services.AddSingleton(emailSettings);
 			services.AddSingleton(jwtSettings);
 
 			services.AddAuthentication(x =>
