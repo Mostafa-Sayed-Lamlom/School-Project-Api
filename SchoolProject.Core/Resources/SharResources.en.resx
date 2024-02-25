@@ -168,6 +168,9 @@
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
   </data>
+  <data name="SendEmailFailed" xml:space="preserve">
+    <value>Send Email Failed</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Done Successfully</value>
   </data>
