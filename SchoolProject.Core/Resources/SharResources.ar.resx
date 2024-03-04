@@ -129,6 +129,9 @@
   <data name="BadRequest" xml:space="preserve">
     <value>هذا الطلب لا يمكن فهمه</value>
   </data>
+  <data name="ConfirmEmailDone" xml:space="preserve">
+    <value>تم تأكيد الاميل</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>تم الإنشاء بنجاح</value>
   </data>
@@ -141,8 +144,14 @@
   <data name="EmailIsExist" xml:space="preserve">
     <value>هذا الاميل موجود بالفعل</value>
   </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>من فضلك قم بتأكي الأميل</value>
+  </data>
   <data name="EmailOrPassWrong" xml:space="preserve">
     <value> الأميل او كلمة السر خطأ</value>
+  </data>
+  <data name="ErrorWhenConfirmEmail" xml:space="preserve">
+    <value>خطأ أثناء تأكيد الاميل</value>
   </data>
   <data name="IsExist" xml:space="preserve">
     <value>موجود بالفعل</value>
@@ -173,6 +182,9 @@
   </data>
   <data name="Success" xml:space="preserve">
     <value>تم بنجاح</value>
+  </data>
+  <data name="TryToRegisterAgain" xml:space="preserve">
+    <value>حاول التسجيل مرة اخرى</value>
   </data>
   <data name="UnAuthorized" xml:space="preserve">
     <value>لا تملك الصلاحية للوصول لتلك المصادر</value>

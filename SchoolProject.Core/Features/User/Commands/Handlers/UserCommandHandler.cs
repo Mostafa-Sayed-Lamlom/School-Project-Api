@@ -5,6 +5,7 @@ using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.User.Commands.Models;
 using SchoolProject.Core.Resources;
+using SchoolProject.Service.Abstractions;
 
 namespace SchoolProject.Core.Features.User.Commands.Handlers
 {
@@ -18,40 +19,35 @@ namespace SchoolProject.Core.Features.User.Commands.Handlers
 		private readonly IMapper _mapper;
 		private readonly IStringLocalizer<SharResources> _stringLocalizer;
 		private readonly UserManager<SchoolProject.Data.Identity.User> _userManager;
+		private readonly IUserService _userService;
 		#endregion
 		#region Controllers
 		public UserCommandHandler(IMapper mapper,
+								  IUserService userService,
 								  UserManager<SchoolProject.Data.Identity.User> userManager,
 								  IStringLocalizer<SharResources> stringLocalizer) : base(stringLocalizer)
 		{
 			_mapper = mapper;
 			_userManager = userManager;
 			_stringLocalizer = stringLocalizer;
+			_userService = userService;
 		}
 		#endregion
 		#region Handle Functions
 		public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
 		{
-			var IsUserEmailExist = await _userManager.FindByEmailAsync(request.Email);
-			if (IsUserEmailExist != null)
-				return BadRequest<string>(_stringLocalizer[SharedResourcesKey.EmailIsExist]);
-
-
-			var IsUserNameExist = await _userManager.FindByNameAsync(request.UserName);
-			if (IsUserNameExist != null)
-				return BadRequest<string>(_stringLocalizer[SharedResourcesKey.UserNameIsExist]);
-
-
-			var newUser = _mapper.Map<SchoolProject.Data.Identity.User>(request);
-			var CreateResult = await _userManager.CreateAsync(newUser, request.Password);
-
-			if (!CreateResult.Succeeded)
-				//return BadRequest<string>(_stringLocalizer[SharedResourcesKey.AddUserFaild]);
-				return BadRequest<string>(CreateResult.Errors.FirstOrDefault().Description);
-
-			await _userManager.AddToRoleAsync(newUser, "User");
-
-			return Created("");
+			var identityUser = _mapper.Map<SchoolProject.Data.Identity.User>(request);
+			//Create
+			var createResult = await _userService.AddUserAsync(identityUser, request.Password);
+			switch (createResult)
+			{
+				case "EmailIsExist": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.EmailIsExist]);
+				case "UserNameIsExist": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.UserNameIsExist]);
+				case "ErrorInCreateUser": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.AddUserFaild]);
+				case "Failed": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.TryToRegisterAgain]);
+				case "Success": return Success<string>("");
+				default: return BadRequest<string>(createResult);
+			}
 		}
 
 		public async Task<Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)

@@ -38,6 +38,7 @@
 			public const string SignIn = Prefix + "Sign-In";
 			public const string IsValidToken = Prefix + "Is-Valid-Token";
 			public const string RefreshToken = Prefix + "Generate-Refresh-Token";
+			public const string ConfirmEmail = "/Api/Authentication/ConfirmEmail";
 		}
 
 		public static class AuthoriztionRouting

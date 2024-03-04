@@ -13,6 +13,7 @@ namespace SchoolProject.Service
 			services.AddTransient<IAuthenticationService, AuthenticationService>();
 			services.AddTransient<IAuthorizationServices, AuthorizationServices>();
 			services.AddTransient<IEmailServices, EmailServices>();
+			services.AddTransient<IUserService, UserService>();
 			return services;
 		}
 	}
