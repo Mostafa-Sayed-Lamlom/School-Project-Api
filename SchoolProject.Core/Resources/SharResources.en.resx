@@ -129,6 +129,9 @@
   <data name="BadRequest" xml:space="preserve">
     <value>Bad Request</value>
   </data>
+  <data name="ConfirmEmailDone" xml:space="preserve">
+    <value>Confirm Email Done</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Created Successfully</value>
   </data>
@@ -141,8 +144,14 @@
   <data name="EmailIsExist" xml:space="preserve">
     <value>Email Is Exist</value>
   </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Email is Not Confirmed</value>
+  </data>
   <data name="EmailOrPassWrong" xml:space="preserve">
     <value>Email or password is wrong</value>
+  </data>
+  <data name="ErrorWhenConfirmEmail" xml:space="preserve">
+    <value>Error When Confirm Email</value>
   </data>
   <data name="IsExist" xml:space="preserve">
     <value>already Exist</value>
@@ -173,6 +182,9 @@
   </data>
   <data name="Success" xml:space="preserve">
     <value>Done Successfully</value>
+  </data>
+  <data name="TryToRegisterAgain" xml:space="preserve">
+    <value>Operation faild Try To Register Again</value>
   </data>
   <data name="UnAuthorized" xml:space="preserve">
     <value>UnAuthorized</value>

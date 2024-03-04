@@ -25,5 +25,9 @@
 		public const string EmailOrPassWrong = "EmailOrPassWrong";
 		public const string AddFailed = "AddFailed";
 		public const string SendEmailFailed = "SendEmailFailed";
+		public const string EmailNotConfirmed = "EmailNotConfirmed";
+		public const string TryToRegisterAgain = "TryToRegisterAgain";
+		public const string ErrorWhenConfirmEmail = "ErrorWhenConfirmEmail";
+		public const string ConfirmEmailDone = "ConfirmEmailDone";
 	}
 }

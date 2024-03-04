@@ -41,6 +41,9 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 		public async Task<Response<JwtAuthResult>> Handle(SginInCommand request, CancellationToken cancellationToken)
 		{
 			var user = await _userManager.FindByEmailAsync(request.Email);
+			if (!user.EmailConfirmed)
+				return BadRequest<JwtAuthResult>(_stringLocalizer[SharedResourcesKey.EmailNotConfirmed]);
+
 			var signInResult = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 			if (!signInResult.Succeeded)
 				return BadRequest<JwtAuthResult>(_stringLocalizer[SharedResourcesKey.EmailOrPassWrong]);
