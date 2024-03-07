@@ -153,6 +153,9 @@
   <data name="ErrorWhenConfirmEmail" xml:space="preserve">
     <value>Error When Confirm Email</value>
   </data>
+  <data name="InvaildCode" xml:space="preserve">
+    <value>Invaild Code</value>
+  </data>
   <data name="IsExist" xml:space="preserve">
     <value>already Exist</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="Success" xml:space="preserve">
     <value>Done Successfully</value>
   </data>
+  <data name="TryAgainInAnotherTime" xml:space="preserve">
+    <value>Try Again In Another Time</value>
+  </data>
   <data name="TryToRegisterAgain" xml:space="preserve">
     <value>Operation faild Try To Register Again</value>
   </data>
@@ -197,5 +203,8 @@
   </data>
   <data name="UserNameIsExist" xml:space="preserve">
     <value>User Name Is Exist</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User Not Found</value>
   </data>
 </root>

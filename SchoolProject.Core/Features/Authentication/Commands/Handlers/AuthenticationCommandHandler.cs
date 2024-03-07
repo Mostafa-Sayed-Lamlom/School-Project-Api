@@ -12,7 +12,9 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 {
 	public class AuthenticationCommandHandler : ResponseHandler,
 										 IRequestHandler<SginInCommand, Response<JwtAuthResult>>,
-										 IRequestHandler<RefreshTokenCommand, Response<JwtAuthResult>>
+										 IRequestHandler<RefreshTokenCommand, Response<JwtAuthResult>>,
+										 IRequestHandler<SendEmailResetPasswordCommand, Response<string>>,
+										 IRequestHandler<ResetPasswordCommand, Response<string>>
 	{
 		#region Fields
 		private readonly IMapper _mapper;
@@ -70,6 +72,31 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 			}
 			var result = await _authenticationService.GetRefreshToken(user, jwtToken, expiryDate, request.refreshToken);
 			return Success(result);
+		}
+
+		public async Task<Response<string>> Handle(SendEmailResetPasswordCommand request, CancellationToken cancellationToken)
+		{
+			var result = await _authenticationService.SendEmailResetPasswordCode(request.Email);
+			switch (result)
+			{
+				case "UserNotFound": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.UserNotFound]);
+				case "ErrorInUpdateUser": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.TryAgainInAnotherTime]);
+				case "Failed": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.TryAgainInAnotherTime]);
+				case "Success": return Success<string>("");
+				default: return BadRequest<string>(_stringLocalizer[SharedResourcesKey.TryAgainInAnotherTime]);
+			}
+		}
+
+		public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+		{
+			var result = await _authenticationService.ResetPassword(request.Email, request.Password);
+			switch (result)
+			{
+				case "UserNotFound": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.UserNotFound]);
+				case "Failed": return BadRequest<string>(_stringLocalizer[SharedResourcesKey.InvaildCode]);
+				case "Success": return Success<string>("");
+				default: return BadRequest<string>(_stringLocalizer[SharedResourcesKey.InvaildCode]);
+			}
 		}
 		#endregion
 	}
