@@ -29,5 +29,8 @@
 		public const string TryToRegisterAgain = "TryToRegisterAgain";
 		public const string ErrorWhenConfirmEmail = "ErrorWhenConfirmEmail";
 		public const string ConfirmEmailDone = "ConfirmEmailDone";
+		public const string UserNotFound = "UserNotFound";
+		public const string TryAgainInAnotherTime = "TryAgainInAnotherTime";
+		public const string InvaildCode = "InvaildCode";
 	}
 }

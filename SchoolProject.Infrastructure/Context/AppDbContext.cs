@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EntityFrameworkCore.EncryptColumn.Extension;
+using EntityFrameworkCore.EncryptColumn.Interfaces;
+using EntityFrameworkCore.EncryptColumn.Util;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
@@ -10,13 +13,14 @@ namespace SchoolProject.Infrastructure.Context
 {
 	public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
 	{
+		private readonly IEncryptionProvider _encryptionProvider;
 		public AppDbContext()
 		{
 
 		}
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 		{
-
+			_encryptionProvider = new GenerateEncryptionProvider("8a4dcaaec64d412380fe4b02193cd26f");
 		}
 		public DbSet<Department> departments { get; set; }
 		public DbSet<Student> students { get; set; }
@@ -32,6 +36,7 @@ namespace SchoolProject.Infrastructure.Context
 		{
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 			base.OnModelCreating(modelBuilder);
+			modelBuilder.UseEncryption(_encryptionProvider);
 		}
 	}
 }

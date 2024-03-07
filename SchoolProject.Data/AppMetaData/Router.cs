@@ -38,6 +38,9 @@
 			public const string SignIn = Prefix + "Sign-In";
 			public const string IsValidToken = Prefix + "Is-Valid-Token";
 			public const string RefreshToken = Prefix + "Generate-Refresh-Token";
+			public const string SendResetPasswordCode = Prefix + "Send-Reset-Password-Code";
+			public const string ConfirmResetPasswordCode = Prefix + "Confirm-Reset-Password-Code";
+			public const string ResetPassword = Prefix + "Reset-Password";
 			public const string ConfirmEmail = "/Api/Authentication/ConfirmEmail";
 		}
 
