@@ -2,15 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Core.Features.Students.Queries.Models;
+using SchoolProject.Core.Filters;
 using SchoolProject.Data.AppMetaData;
 
 namespace SchoolProject.Api.Controllers
 {
 	[ApiController]
-	[Authorize]
+	[Authorize(Roles = "Admin")]
 	public class StudentController : AppControllerBase
 	{
-
+		[Authorize(Roles = "User")]
+		[ServiceFilter(typeof(AuthFilter))]
 		[HttpGet(Router.StudentRouting.List)]
 		public async Task<IActionResult> GetStudentList()
 		{
