@@ -14,5 +14,11 @@ namespace SchoolProject.Api.Controllers
 			var response = await _mediator.Send(query);
 			return NewResult(response);
 		}
+
+		[HttpGet(Router.DepartmentRouting.GetNumStudsOfDept)]
+		public async Task<IActionResult> GetNumStudsOfDept()
+		{
+			return NewResult(await _mediator.Send(new GetNumStudsOfDeptQuery()));
+		}
 	}
 }
