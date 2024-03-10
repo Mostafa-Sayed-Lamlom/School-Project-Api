@@ -20,6 +20,7 @@
 		{
 			public const string Prefix = Rule + "Department/";
 			public const string GetById = Prefix + "Id";
+			public const string GetNumStudsOfDept = Prefix + "Get-Numbers-Of-Students-Of-Department";
 		}
 		public static class UserRouting
 		{

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Entities.views;
 using SchoolProject.Data.Identity;
 using System.Reflection;
 
@@ -31,6 +32,8 @@ namespace SchoolProject.Infrastructure.Context
 		public DbSet<Ins_Sub> instructorSubjects { get; set; }
 		public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
 
+		//views
+		public DbSet<viewNumStudsInDept> viewNumStudsInDept { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

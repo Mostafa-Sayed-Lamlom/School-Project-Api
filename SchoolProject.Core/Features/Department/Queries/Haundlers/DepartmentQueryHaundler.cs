@@ -13,7 +13,8 @@ using System.Linq.Expressions;
 namespace SchoolProject.Core.Features.Department.Queries.Haundlers
 {
 	public class DepartmentQueryHaundler : ResponseHandler,
-										   IRequestHandler<GetDepartmentByIdQuery, Response<GetDepartmentByIdResponse>>
+										   IRequestHandler<GetDepartmentByIdQuery, Response<GetDepartmentByIdResponse>>,
+										   IRequestHandler<GetNumStudsOfDeptQuery, Response<List<GetNumStudsOfDeptResponse>>>
 	{
 		#region Fields
 		private readonly IDepartmentService _departmentService;
@@ -47,6 +48,13 @@ namespace SchoolProject.Core.Features.Department.Queries.Haundlers
 			var studentQuerable = _studentService.GetStudentByDepartmentIDQueryable(request.Id);
 			var PaginatedList = await studentQuerable.Select(expression).ToPaginatedListAsync(request.StudentPageNumber, request.StudentPageSize);
 			result.StudentList = PaginatedList;
+			return Success(result);
+		}
+
+		public async Task<Response<List<GetNumStudsOfDeptResponse>>> Handle(GetNumStudsOfDeptQuery request, CancellationToken cancellationToken)
+		{
+			var viewDepartmentResult = await _departmentService.GetViewNumStudsInDeptAsync();
+			var result = _mapper.Map<List<GetNumStudsOfDeptResponse>>(viewDepartmentResult);
 			return Success(result);
 		}
 		#endregion
