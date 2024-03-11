@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Entities.procedures;
 using SchoolProject.Data.Entities.views;
 using SchoolProject.Infrastructure.Abstractions;
+using SchoolProject.Infrastructure.Abstractions.procedures;
 using SchoolProject.Infrastructure.Abstractions.views;
 using SchoolProject.Service.Abstractions;
 
@@ -12,13 +14,16 @@ namespace SchoolProject.Service.Implementations
 		#region Fields
 		private readonly IDepartmentRepository _departmentRepository;
 		private readonly IViewRepository<viewNumStudsInDept> _viewNumStudsInDept;
+		private readonly IDepartmentStudentCountProcRepository _departmentStudentCountProcRepository;
 		#endregion
 		#region Constructors
 		public DepartmentService(IDepartmentRepository repository,
-								 IViewRepository<viewNumStudsInDept> viewNumStudsInDept)
+								 IViewRepository<viewNumStudsInDept> viewNumStudsInDept,
+								 IDepartmentStudentCountProcRepository departmentStudentCountProcRepository)
 		{
 			_departmentRepository = repository;
 			_viewNumStudsInDept = viewNumStudsInDept;
+			_departmentStudentCountProcRepository = departmentStudentCountProcRepository;
 		}
 		#endregion
 		#region Haundel Functions
@@ -31,6 +36,11 @@ namespace SchoolProject.Service.Implementations
 											  .Include(d => d.InsManger)
 											  .FirstOrDefaultAsync();
 			return department;
+		}
+
+		public async Task<IReadOnlyList<DepartmentStudentCountProc>> GetDepartmentStudentCountProcs(DepartmentStudentCountProcParameters parameters)
+		{
+			return await _departmentStudentCountProcRepository.GetDepartmentStudentCountProcs(parameters);
 		}
 
 		public async Task<List<viewNumStudsInDept>> GetViewNumStudsInDeptAsync()
