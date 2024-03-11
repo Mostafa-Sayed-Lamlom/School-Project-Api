@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SchoolProject.Data.Entities.views;
 using SchoolProject.Infrastructure.Abstractions;
+using SchoolProject.Infrastructure.Abstractions.procedures;
 using SchoolProject.Infrastructure.Abstractions.views;
 using SchoolProject.Infrastructure.InfrastructureBase;
 using SchoolProject.Infrastructure.Repositories;
+using SchoolProject.Infrastructure.Repositories.proceduers;
 using SchoolProject.Infrastructure.Repositories.views;
 
 namespace SchoolProject.Infrastructure
@@ -21,6 +23,8 @@ namespace SchoolProject.Infrastructure
 
 			//views
 			services.AddTransient<IViewRepository<viewNumStudsInDept>, viewNumStudsInDeptRepository>();
+			//procedures
+			services.AddTransient<IDepartmentStudentCountProcRepository, DepartmentStudentCountProcRepository>();
 
 			return services;
 		}

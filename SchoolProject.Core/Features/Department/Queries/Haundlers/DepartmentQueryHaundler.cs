@@ -7,6 +7,7 @@ using SchoolProject.Core.Features.Department.Queries.Results;
 using SchoolProject.Core.Resources;
 using SchoolProject.Core.Wrappers;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Entities.procedures;
 using SchoolProject.Service.Abstractions;
 using System.Linq.Expressions;
 
@@ -14,7 +15,8 @@ namespace SchoolProject.Core.Features.Department.Queries.Haundlers
 {
 	public class DepartmentQueryHaundler : ResponseHandler,
 										   IRequestHandler<GetDepartmentByIdQuery, Response<GetDepartmentByIdResponse>>,
-										   IRequestHandler<GetNumStudsOfDeptQuery, Response<List<GetNumStudsOfDeptResponse>>>
+										   IRequestHandler<GetNumStudsOfDeptQuery, Response<List<GetNumStudsOfDeptResponse>>>,
+										   IRequestHandler<GetNumStudsOfDeptByIdQuery, Response<GetNumStudsOfDeptByIdResponse>>
 	{
 		#region Fields
 		private readonly IDepartmentService _departmentService;
@@ -57,6 +59,20 @@ namespace SchoolProject.Core.Features.Department.Queries.Haundlers
 			var result = _mapper.Map<List<GetNumStudsOfDeptResponse>>(viewDepartmentResult);
 			return Success(result);
 		}
+
+		public async Task<Response<GetNumStudsOfDeptByIdResponse>> Handle(GetNumStudsOfDeptByIdQuery request, CancellationToken cancellationToken)
+		{
+			var dept = await _departmentService.GetDepartmentById(request.DID);
+			//check if exist or not
+			if (dept == null) return NotFound<GetNumStudsOfDeptByIdResponse>(_stringLocalizer[SharedResourcesKey.NotFound]);
+
+			var parameters = _mapper.Map<DepartmentStudentCountProcParameters>(request);
+			var procResult = await _departmentService.GetDepartmentStudentCountProcs(parameters);
+			var result = _mapper.Map<GetNumStudsOfDeptByIdResponse>(procResult.FirstOrDefault());
+			return Success(result);
+		}
+
+
 		#endregion
 	}
 }
