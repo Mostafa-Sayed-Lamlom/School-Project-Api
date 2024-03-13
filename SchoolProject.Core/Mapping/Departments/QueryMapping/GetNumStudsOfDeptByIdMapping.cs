@@ -4,7 +4,7 @@ using SchoolProject.Data.Entities.procedures;
 
 namespace SchoolProject.Core.Mapping.Departments
 {
-	public partial class DepartmentProfile
+	public partial class InstructorProfile
 	{
 		public void GetNumStudsOfDeptByIdMapping()
 		{
