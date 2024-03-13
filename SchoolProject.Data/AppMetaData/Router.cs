@@ -62,7 +62,14 @@
 
 		public static class EmailRouting
 		{
-			public const string SendEmail = Rule + "SendEmail";
+			public const string Prefix = Rule + "EmailsRoute/";
+			public const string SendEmail = Prefix + "SendEmail";
+		}
+		public static class InstructorRouting
+		{
+			public const string Prefix = Rule + "InstructorRouting/";
+			public const string GetSalarySummationOfInstructor = Prefix + "Get-Salary-Summation-Of-Instructor";
+			public const string GetInstructorDataFunction = Prefix + "Get-Instructors-Data-Function";
 		}
 	}
 }

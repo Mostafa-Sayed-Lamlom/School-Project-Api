@@ -2,9 +2,9 @@
 
 namespace SchoolProject.Core.Mapping.Departments
 {
-	public partial class DepartmentProfile : Profile
+	public partial class InstructorProfile : Profile
 	{
-		public DepartmentProfile()
+		public InstructorProfile()
 		{
 			GetDepartmentByIdMapping();
 			GetNumStudsOfDeptMapping();
