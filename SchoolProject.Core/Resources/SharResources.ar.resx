@@ -153,6 +153,9 @@
   <data name="ErrorWhenConfirmEmail" xml:space="preserve">
     <value>خطأ أثناء تأكيد الاميل</value>
   </data>
+  <data name="FailedToUploadImage" xml:space="preserve">
+    <value>فشل تحميل الصورة</value>
+  </data>
   <data name="InvaildCode" xml:space="preserve">
     <value>هذا الكود خطأ</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>الأسم</value>
+  </data>
+  <data name="NoImage" xml:space="preserve">
+    <value>لا توجد صورة</value>
   </data>
   <data name="NotEmpty" xml:space="preserve">
     <value>لا يمكن ترك العنصر فارغ</value>
