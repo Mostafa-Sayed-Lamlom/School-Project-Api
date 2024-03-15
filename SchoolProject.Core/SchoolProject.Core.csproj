@@ -44,9 +44,7 @@
     <Folder Include="Features\Authentication\Queries\Results\" />
     <Folder Include="Features\Department\Commands\" />
     <Folder Include="Features\Email\Queries\" />
-    <Folder Include="Features\Instructor\Commands\" />
     <Folder Include="Mapping\Authorization\CommandMapping\" />
-    <Folder Include="Mapping\Instructors\CommandMapping\" />
     <Folder Include="Mapping\Departments\CommandMapping\" />
   </ItemGroup>
 

@@ -70,6 +70,7 @@
 			public const string Prefix = Rule + "InstructorRouting/";
 			public const string GetSalarySummationOfInstructor = Prefix + "Get-Salary-Summation-Of-Instructor";
 			public const string GetInstructorDataFunction = Prefix + "Get-Instructors-Data-Function";
+			public const string AddInstructor = Prefix + "Create";
 		}
 	}
 }

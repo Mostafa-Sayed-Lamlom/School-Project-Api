@@ -22,7 +22,7 @@ namespace SchoolProject.Data.Entities
 		public decimal? Salary { get; set; }
 		public string? Image { get; set; }
 
-		public int? DID { get; set; }
+		public int DID { get; set; }
 		[ForeignKey("DID")]
 		[InverseProperty("Instructors")]
 		public virtual Department? Department { get; set; }
