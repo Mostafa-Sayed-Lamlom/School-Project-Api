@@ -50,6 +50,8 @@ namespace SchoolProject.Core.Features.Department.Queries.Haundlers
 			var studentQuerable = _studentService.GetStudentByDepartmentIDQueryable(request.Id);
 			var PaginatedList = await studentQuerable.Select(expression).ToPaginatedListAsync(request.StudentPageNumber, request.StudentPageSize);
 			result.StudentList = PaginatedList;
+
+			//Log.Information($"Get Department By Id {request.Id}!");
 			return Success(result);
 		}
 

@@ -12,6 +12,7 @@ using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Context;
 using SchoolProject.Infrastructure.Seeder;
 using SchoolProject.Service;
+using Serilog;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -84,6 +85,12 @@ builder.Services.AddTransient<IUrlHelper>(x =>
 	var factory = x.GetRequiredService<IUrlHelperFactory>();
 	return factory.GetUrlHelper(actionContext);
 });
+
+#region Serilog
+Log.Logger = new LoggerConfiguration()
+			  .ReadFrom.Configuration(builder.Configuration).CreateLogger();
+builder.Services.AddSerilog();
+#endregion
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
