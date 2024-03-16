@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.Core.Features.User.Commands.Models;
 using SchoolProject.Core.Features.User.Queries.Models;
 using SchoolProject.Data.AppMetaData;
@@ -6,10 +7,11 @@ using SchoolProject.Data.AppMetaData;
 namespace SchoolProject.Api.Controllers
 {
 	[ApiController]
+	[Authorize(Roles = "Admin")]
 	public class UserController : AppControllerBase
 	{
 		[HttpPost(Router.UserRouting.Create)]
-		public async Task<IActionResult> GetDepartmentById([FromBody] AddUserCommand command)
+		public async Task<IActionResult> CreateUser([FromBody] AddUserCommand command)
 		{
 			var response = await _mediator.Send(command);
 			return NewResult(response);

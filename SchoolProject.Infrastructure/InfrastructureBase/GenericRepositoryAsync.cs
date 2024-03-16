@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using SchoolProject.Infrastructure.Context;
 
 namespace SchoolProject.Infrastructure.InfrastructureBase
@@ -115,6 +110,21 @@ namespace SchoolProject.Infrastructure.InfrastructureBase
 		{
 			_dbContext.Set<T>().UpdateRange(entities);
 			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task<IDbContextTransaction> BeginTransactionAsync()
+		{
+			return await _dbContext.Database.BeginTransactionAsync();
+		}
+
+		public async Task CommitAsync()
+		{
+			await _dbContext.Database.CommitTransactionAsync();
+		}
+
+		public async Task RollBackAsync()
+		{
+			await _dbContext.Database.RollbackTransactionAsync();
 		}
 		#endregion
 	}
