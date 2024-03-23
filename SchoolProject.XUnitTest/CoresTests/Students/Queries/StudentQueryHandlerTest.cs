@@ -11,8 +11,10 @@ using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities;
 using SchoolProject.Data.Helpers;
 using SchoolProject.Service.Abstractions;
+using SchoolProject.XUnitTest.TestModels;
 using System.Net;
 
+//[assembly: CollectionBehavior(CollectionBehavior.CollectionPerClass, MaxParallelThreads = 6)]
 namespace SchoolProject.XUnitTest.CoresTests.Students.Queries
 {
 	public class StudentQueryHandlerTest
@@ -74,8 +76,10 @@ namespace SchoolProject.XUnitTest.CoresTests.Students.Queries
 			result.StatusCode.Should().Be(HttpStatusCode.NotFound);
 		}
 		[Theory]
-		[InlineData(1)]
+		//[InlineData(1)]
 		//[InlineData(2)]
+		//[ClassData(typeof(PassDataUsingClassData))]
+		[MemberData(nameof(PassDataToParamUsingMemberData.GetParamData), MemberType = typeof(PassDataToParamUsingMemberData))]
 		public async Task Handle_StudentById_where_Student_Found_Return_StatusCode200(int id)
 		{
 			//Arrange
