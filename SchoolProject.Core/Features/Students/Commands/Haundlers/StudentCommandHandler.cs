@@ -44,6 +44,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Haundlers
 
 		public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
 		{
+			int x = 2;
 			//chek id(found or not)
 			var student = await _studentService.GetStudentByIdAsync(request.Id);
 			//not found
