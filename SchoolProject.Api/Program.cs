@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SchoolProject.Core;
+using SchoolProject.Core.Filters;
 using SchoolProject.Core.Middlewares;
 using SchoolProject.Data.Identity;
 using SchoolProject.Infrastructure;
@@ -86,6 +87,7 @@ builder.Services.AddTransient<IUrlHelper>(x =>
 	return factory.GetUrlHelper(actionContext);
 });
 
+builder.Services.AddTransient<AuthFilter>();
 #region Serilog
 Log.Logger = new LoggerConfiguration()
 			  .ReadFrom.Configuration(builder.Configuration).CreateLogger();
